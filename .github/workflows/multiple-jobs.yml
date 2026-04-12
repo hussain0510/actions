@@ -1,0 +1,32 @@
+name: generate ascii artwork split on multiple jobs
+
+on:
+    push
+
+jobs:
+    build_job_1:
+        runs-on: ubuntu-latest
+        steps:
+            - name: install the cowsay command
+              run: sudo apt-get install cowsay -y
+
+            - name: execute the cowsay command
+              run: cowsay -f dragon "Run for cover, Iam a DRAGON....RAWR" >> dragon.txt
+
+            - name: sleep 30 seconds
+              run: sleep 30 seconds
+
+    build_job_2:
+        runs-on: ubuntu-latest
+        steps:
+            - name: text file exists
+              run: grep -i "dragon" dragon.txt
+
+    build_job_3:
+        runs-on: ubuntu-latest
+        steps:
+            - name: read file
+              run: cat dragon.txt
+
+            - name: deploy
+              run: echo Deploying...
