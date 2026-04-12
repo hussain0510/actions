@@ -17,29 +17,34 @@ jobs:
               uses: actions/upload-artifact@v7
               with: 
                 name: dragon.txt
+                path: ./
 
             - name: sleep 30 seconds
               run: sleep 30
 
     build_job_2:
         runs-on: ubuntu-latest
+        needs: build_job_1
         steps:
             - name: download artifact
               uses: actions/download-artifact@v8
               with:
                 name: dragon.txt
+                path: ./
 
             - name: text file exists
               run: grep -i "dragon" dragon.txt
 
     build_job_3:
         runs-on: ubuntu-latest
+        needs: build_job_1
         steps:
             - name: download artifact
               uses: actions/download-artifact@v8
               with:
                 name: dragon.txt
-                
+                path: ./
+
             - name: read file
               run: cat dragon.txt
 
