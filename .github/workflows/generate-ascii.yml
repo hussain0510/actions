@@ -1,7 +1,7 @@
 name: Generate ASCII Artwork
 
 on:
-    push
+    workflow_dispatch: 
 
 jobs:
     ascii_job:
@@ -15,6 +15,6 @@ jobs:
 
             - name: grant permissions to the shell script
               run: chmod 755 ascii-script.sh
-              
+
             - name: execute shell scriot
               run: ./ascii-script.sh
