@@ -1,7 +1,7 @@
 name: generate ascii artwork split on multiple jobs
 
 on:
-    push
+    workflow_dispatch
 
 jobs:
     build_job_1:
